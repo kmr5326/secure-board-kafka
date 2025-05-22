@@ -1,10 +1,10 @@
-package com.hg.springSecurityStudy;
+package com.hg.secureBoardKafka;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringSecurityStudyApplicationTests {
+class SecureBoardKafkaApplicationTests {
 
 	@Test
 	void contextLoads() {

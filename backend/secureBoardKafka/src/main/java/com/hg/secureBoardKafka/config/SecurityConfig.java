@@ -1,4 +1,4 @@
-package com.hg.springSecurityStudy.config;
+package com.hg.secureBoardKafka.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

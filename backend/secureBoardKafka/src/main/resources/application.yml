@@ -1,6 +1,6 @@
 spring:
   application:
-    name: springSecurityStudy
+    name: secureBoardKafka
 
   datasource:
     url: 'jdbc:mysql://127.0.0.1:3306/spring_security_study'

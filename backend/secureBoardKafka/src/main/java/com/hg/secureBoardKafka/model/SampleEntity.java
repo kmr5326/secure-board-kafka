@@ -1,4 +1,4 @@
-package com.hg.springSecurityStudy.model;
+package com.hg.secureBoardKafka.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
