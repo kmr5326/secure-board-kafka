@@ -1,1 +1,1 @@
-# spring-security-study
+# secure-board-kafka
