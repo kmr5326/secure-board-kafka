@@ -25,9 +25,6 @@ public class SecurityConfig {
                 .formLogin(formLogin-> formLogin.disable())
                 .logout(logout -> logout
                         .logoutUrl("/api/auth/logout"))
-                .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().authenticated()
-                )
                 .build();
     }
 
