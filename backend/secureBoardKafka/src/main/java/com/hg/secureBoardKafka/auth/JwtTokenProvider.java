@@ -33,7 +33,6 @@ public class JwtTokenProvider {
     private long validityInMilliseconds;
 
     private Key key;
-    private final UserDetailsService userDetailsService;
     private final String AUTHORITIES_KEY = "roles";
     private final long REFRESH_TOKEN_EXPIRE_TIME= 1000 * 60 * 60 * 24 * 7; //refresh 7일
 
