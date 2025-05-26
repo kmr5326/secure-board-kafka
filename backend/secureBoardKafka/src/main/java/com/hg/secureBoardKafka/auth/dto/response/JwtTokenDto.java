@@ -1,4 +1,4 @@
-package com.hg.secureBoardKafka.auth.dto;
+package com.hg.secureBoardKafka.auth.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

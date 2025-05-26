@@ -1,7 +1,7 @@
 package com.hg.secureBoardKafka.user.service;
 
 import com.hg.secureBoardKafka.auth.JwtTokenProvider;
-import com.hg.secureBoardKafka.auth.dto.JwtTokenDto;
+import com.hg.secureBoardKafka.auth.dto.response.JwtTokenDto;
 import com.hg.secureBoardKafka.user.dto.request.SignUpRequestDto;
 import com.hg.secureBoardKafka.user.entity.User;
 import com.hg.secureBoardKafka.user.repository.UserRepository;

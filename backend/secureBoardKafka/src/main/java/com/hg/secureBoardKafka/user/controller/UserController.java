@@ -1,6 +1,6 @@
 package com.hg.secureBoardKafka.user.controller;
 
-import com.hg.secureBoardKafka.auth.dto.JwtTokenDto;
+import com.hg.secureBoardKafka.auth.dto.response.JwtTokenDto;
 import com.hg.secureBoardKafka.user.dto.request.SignUpRequestDto;
 import com.hg.secureBoardKafka.user.service.UserService;
 import lombok.RequiredArgsConstructor;

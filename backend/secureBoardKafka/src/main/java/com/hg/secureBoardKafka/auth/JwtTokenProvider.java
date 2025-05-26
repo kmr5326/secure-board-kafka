@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
-import com.hg.secureBoardKafka.auth.dto.JwtTokenDto;
+import com.hg.secureBoardKafka.auth.dto.response.JwtTokenDto;
 
 @Component
 @RequiredArgsConstructor
