@@ -20,5 +20,5 @@ spring:
         format_sql: true
 
 jwt:
-  secret: "swkoqfjojkjavjwjawoojpopfpo1@$@%#osffojofjfoj"
+  secret: "swkoqfjojkjavjwjawoojpopfpo1@$@%#osffojofjfojsagagwojavpovjopwpovopanvo"
   expiration: 3600000 # 1 hour
