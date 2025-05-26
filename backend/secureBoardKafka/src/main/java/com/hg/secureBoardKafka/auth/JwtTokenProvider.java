@@ -58,6 +58,8 @@ public class JwtTokenProvider {
 
         // Refresh Token 생성
         String refreshToken = Jwts.builder()
+                .setSubject(authentication.getName()) // 또는 user.getUsername(), userId 등
+                .setIssuedAt(new Date())
                 .setExpiration(new Date(now + REFRESH_TOKEN_EXPIRE_TIME))
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
@@ -111,5 +113,14 @@ public class JwtTokenProvider {
             log.error("[ERR] : 잘못된 JWT TOKEN");
         }
         return false;
+    }
+
+    public String getUserId(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
     }
 }

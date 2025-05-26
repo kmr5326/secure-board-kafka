@@ -22,6 +22,7 @@ public class AuthService {
     private final JwtTokenProvider jwtTokenProvider;
     private final CustomUserDetailsService customUserDetailsService;
     private final PasswordEncoder passwordEncoder;
+    private final RefreshTokenService refreshTokenService;
 
     public JwtTokenDto login(LoginRequestDto loginRequestDto){
         UserDetails user = customUserDetailsService.loadUserByUsername(loginRequestDto.userId());
@@ -37,6 +38,40 @@ public class AuthService {
                         loginRequestDto.password()
                 )
         );
-        return jwtTokenProvider.createToken(authentication);
+
+        JwtTokenDto jwtTokenDto=jwtTokenProvider.createToken(authentication);
+
+        refreshTokenService.save(
+                authentication.getName(), // userId
+                jwtTokenDto.getRefreshToken(),
+                7 * 24 * 60 * 60 * 1000L  // 7일 in ms
+        );
+        return jwtTokenDto;
     }
+
+    public JwtTokenDto refreshToken(String refreshToken) {
+        if (!jwtTokenProvider.validateToken(refreshToken)) {
+            throw new BadCredentialsException("유효하지 않은 토큰");
+        }
+
+        String userId = jwtTokenProvider.getUserId(refreshToken);
+
+        if (!refreshTokenService.validate(userId, refreshToken)) {
+            throw new BadCredentialsException("리프레시 토큰 불일치");
+        }
+
+        // 새로운 Access Token 발급
+//        Authentication authentication = jwtTokenProvider.getAuthentication(refreshToken);
+        UserDetails userDetails = customUserDetailsService.loadUserByUsername(userId);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+                userDetails, null, userDetails.getAuthorities()
+        );
+        JwtTokenDto newToken = jwtTokenProvider.createToken(authentication);
+
+        // Redis에 새 Refresh Token 저장
+        refreshTokenService.save(userId, newToken.getRefreshToken(), 7 * 24 * 60 * 60 * 1000L);
+
+        return newToken;
+    }
+
 }

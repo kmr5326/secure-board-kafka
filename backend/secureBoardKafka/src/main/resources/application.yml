@@ -1,16 +1,13 @@
 spring:
   application:
     name: secureBoardKafka
-
   datasource:
     url: 'jdbc:mysql://127.0.0.1:3306/spring_security_study'
     username: 'root'
     password: '53265326'
-
   output:
     ansi:
       enabled: ALWAYS
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -18,6 +15,11 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
 
 jwt:
   secret: "swkoqfjojkjavjwjawoojpopfpo1@$@%#osffojofjfojsagagwojavpovjopwpovopanvo"
